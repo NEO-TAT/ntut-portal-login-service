@@ -18,12 +18,14 @@
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^8.0.7",
+    "qs": "^6.9.1",
     "tough-cookie": "^3.0.1"
   },
   "devDependencies": {
     "@types/koa": "^2.11.1",
     "@types/koa-bodyparser": "^4.3.0",
     "@types/koa-router": "^7.4.0",
+    "@types/qs": "^6.9.1",
     "@typescript-eslint/eslint-plugin": "^2.19.0",
     "@typescript-eslint/parser": "^2.19.0",
     "eslint": "^6.8.0",
