@@ -14,9 +14,11 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
+    "axios-cookiejar-support": "^0.5.1",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
-    "koa-router": "^8.0.7"
+    "koa-router": "^8.0.7",
+    "tough-cookie": "^3.0.1"
   },
   "devDependencies": {
     "@types/koa": "^2.11.1",
