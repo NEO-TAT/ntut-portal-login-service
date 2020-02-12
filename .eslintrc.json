@@ -1,0 +1,29 @@
+{
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "standard"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "filenames"
+  ],
+  "rules": {
+    "filenames/match-exported": [
+      2,
+      "kebab"
+    ],
+    "filenames/no-index": 2
+  }
+}
