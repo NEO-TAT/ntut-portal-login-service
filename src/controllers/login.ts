@@ -2,7 +2,6 @@ import axios from 'axios'
 import axiosCookieJarSupport from 'axios-cookiejar-support'
 import tough from 'tough-cookie'
 import qs from 'qs'
-// eslint-disable-next-line no-unused-vars
 import { Context } from 'koa'
 
 const PORTAL_LOGIN_URL = 'https://app.ntut.edu.tw/login.do'
