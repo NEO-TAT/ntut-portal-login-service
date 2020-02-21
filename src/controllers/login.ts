@@ -4,7 +4,8 @@ import tough from 'tough-cookie'
 import qs from 'qs'
 import { Context } from 'koa'
 
-const PORTAL_LOGIN_URL = 'https://app.ntut.edu.tw/login.do'
+const PORTAL_INDEX_URL = 'https://nportal.ntut.edu.tw/index.do'
+const PORTAL_LOGIN_URL = 'https://nportal.ntut.edu.tw/login.do'
 
 interface LoginRequestBody {
   studentId: string;
@@ -15,19 +16,23 @@ axiosCookieJarSupport(axios)
 
 async function loginPortal (studentId: string, password: string, cookieJar: tough.CookieJar) {
   const httpClient = axios.create()
-  const { data } = await httpClient.post(PORTAL_LOGIN_URL, qs.stringify({
+  const postData = qs.stringify({
     muid: studentId,
-    mpassword: password
-  }),
-  {
-    jar: cookieJar,
-    headers: {
-      'User-Agent': 'Direk Android App'
-    },
-    withCredentials: true
+    mpassword: password,
+    forceMobile: 'mobile'
   })
-  if (!data.success) {
-    throw new Error(data.errorMsg)
+  const { data } = await httpClient.post(PORTAL_LOGIN_URL, postData,
+    {
+      jar: cookieJar,
+      headers: {
+        Referer: PORTAL_INDEX_URL
+      },
+      withCredentials: true
+    })
+  // if login successfully, the responsed body would only contain a <script>
+  const isLoginFailed = (data as string).trim().startsWith('<!DOCTYPE')
+  if (isLoginFailed) {
+    throw new Error('LOGIN_FAILED')
   }
 }
 
